@@ -6,7 +6,7 @@ use warnings;
 
 use Perinci::Util qw(declare_property);
 
-our $VERSION = '0.02'; # VERSION
+# VERSION
 
 sub filter_using_for {
     my ($self, %args) = @_;
@@ -141,7 +141,6 @@ declare_property(
     schema => ['hash'],
     wrapper => {
         meta => {
-            v       => 2,
             # very low, we want to be the last to process result before
             # returning it
             prio    => 100,
@@ -162,18 +161,6 @@ declare_property(
 1;
 # ABSTRACT: Postfilter function result
 
-
-__END__
-=pod
-
-=head1 NAME
-
-Perinci::Sub::Wrapper::property::result_postfilter - Postfilter function result
-
-=head1 VERSION
-
-version 0.02
-
 =head1 SYNOPSIS
 
  # in function metadata
@@ -182,6 +169,7 @@ version 0.02
      date => 'epoch',  # convert date object to an integer Unix time
      code => 'str',    # convert subroutine to string literal 'CODE'
  }
+
 
 =head1 DESCRIPTION
 
@@ -215,6 +203,7 @@ call overhead).
 The source code also contains another filtering implementation using
 L<Data::Rmap>, for benchmarking purposes only.
 
+
 =head1 NOTES
 
 Another alternative is using the encoder's facility, for example the L<JSON>
@@ -231,20 +220,9 @@ But this currently can't convert coderefs. JSON also can't handle circular
 references, which neither this wrapper property nor the above way can work
 around.
 
+
 =head1 SEE ALSO
 
 L<Perinci>
 
-=head1 AUTHOR
-
-Steven Haryanto <stevenharyanto@gmail.com>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2012 by Steven Haryanto.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
 =cut
-
