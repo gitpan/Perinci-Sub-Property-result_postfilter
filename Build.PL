@@ -14,12 +14,12 @@ my %module_build_args = (
   "configure_requires" => {
     "Module::Build" => "0.3601"
   },
-  "dist_abstract" => "Postfilter function result",
+  "dist_abstract" => "(DEPRECATED) Postfilter function result",
   "dist_author" => [
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Perinci-Sub-property-result_postfilter",
-  "dist_version" => "0.02",
+  "dist_version" => "0.03",
   "license" => "perl",
   "module_name" => "Perinci::Sub::property::result_postfilter",
   "recommends" => {},

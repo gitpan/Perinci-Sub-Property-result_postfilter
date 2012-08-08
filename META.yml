@@ -1,5 +1,5 @@
 ---
-abstract: 'Postfilter function result'
+abstract: '(DEPRECATED) Postfilter function result'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
@@ -22,4 +22,4 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Perinci-Sub-property-result_postfilter/
   repository: http://github.com/sharyanto/perl-Perinci-Sub-property-result_postfilter
-version: 0.02
+version: 0.03

@@ -6,7 +6,7 @@ use warnings;
 
 use Perinci::Util qw(declare_property);
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 sub filter_using_for {
     my ($self, %args) = @_;
@@ -77,62 +77,6 @@ sub filter_using_for {
     );
 }
 
-sub filter_using_rmap {
-    my ($self, %args) = @_;
-
-    my $v    = $args{new} // $args{value};
-    return unless $v && keys(%$v);
-
-    $self->select_section('after_call');
-    $self->push_lines('', '# postfilter result (rmap version)');
-
-    my $term = $self->{_meta}{result_naked} ? '$res' : '$res->[2]';
-
-    my $errp = "result_postfilter: Unknown filter";
-    my $gen_process_item = sub {
-        my $t = shift;
-        my $code = '';
-        while (my ($a, $b) = each %$v) {
-            if ($a eq 're') {
-                $code .= ($code ? "elsif":"if").
-                    "(ref($t) eq 'Regexp'){";
-                if ($b eq 'str') {
-                    $code .= "$t = \"$t\"";
-                } else {
-                    die "$errp for $a: $b";
-                }
-                $code.="}";
-            } elsif ($a eq 'date') {
-                $code .= ($code ? "elsif":"if").
-                    "(ref($t) eq 'DateTime'){";
-                if ($b eq 'epoch') {
-                    $code .= "$t = $t->epoch";
-                } else {
-                    die "$errp for $a: $b";
-                }
-                $code.="}";
-            } elsif ($a eq 'code') {
-                $code .= ($code ? "elsif":"if").
-                    "(ref($t) eq 'CODE'){";
-                if ($b eq 'str') {
-                    $code .= "$t = 'CODE'";
-                } else {
-                    die "$errp for $a: $b";
-                }
-                $code.="}";
-            } else {
-                die "$errp $a";
-            }
-        }
-        $code;
-    };
-
-    $self->push_lines(
-        'use Data::Rmap qw(rmap_ref);',
-        'rmap_ref { '. $gen_process_item->('$_') . " } $term;"
-    );
-}
-
 our $_implementation = 'for';
 
 declare_property(
@@ -150,8 +94,6 @@ declare_property(
         handler => sub {
             if ($_implementation eq 'for') {
                 filter_using_for(@_);
-            } elsif ($_implementation eq 'rmap') {
-                filter_using_rmap(@_);
             } else {
                 die "Unknown implementation '$_implementation'";
             }
@@ -160,7 +102,7 @@ declare_property(
 );
 
 1;
-# ABSTRACT: Postfilter function result
+# ABSTRACT: (DEPRECATED) Postfilter function result
 
 
 __END__
@@ -168,11 +110,11 @@ __END__
 
 =head1 NAME
 
-Perinci::Sub::Wrapper::property::result_postfilter - Postfilter function result
+Perinci::Sub::Wrapper::property::result_postfilter - (DEPRECATED) Postfilter function result
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -184,6 +126,11 @@ version 0.02
  }
 
 =head1 DESCRIPTION
+
+B<NOTE:> The use of this property is now deprecated. Generating filtering code
+for each function is quite wasteful when there are hundreds or more functions
+that are wrapped. Instead, filtering is now done in formatters like
+L<Data::Format::Pretty::JSON> and L<Data::Format::Pretty::YAML>.
 
 This property specifies postfilters for function result. Currently the focus of
 this property is converting values that are unsafe when exporting to JSON/YAML.
@@ -211,9 +158,6 @@ More sophisticated filtering rules might be specified in the future.
 Filtering using generated code can be faster since the code will use for() loop
 and inline conversion instead of callback for each data item (higher subroutine
 call overhead).
-
-The source code also contains another filtering implementation using
-L<Data::Rmap>, for benchmarking purposes only.
 
 =head1 NOTES
 

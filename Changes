@@ -1,5 +1,10 @@
 Revision history for Perinci-Sub-property-result_postfilter
 
+0.03     2012-08-08 (SHARYANTO)
+
+         No functional changes. Mark deprecated.
+
+
 0.02     2012-07-31 (SHARYANTO)
 
          No functional changes. Update to wrapping protocol version 2.
