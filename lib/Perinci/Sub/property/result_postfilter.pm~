@@ -102,7 +102,7 @@ declare_property(
 );
 
 1;
-# ABSTRACT: Postfilter function result
+# ABSTRACT: (DEPRECATED) Postfilter function result
 
 =head1 SYNOPSIS
 

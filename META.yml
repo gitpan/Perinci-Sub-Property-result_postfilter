@@ -22,4 +22,4 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Perinci-Sub-property-result_postfilter/
   repository: http://github.com/sharyanto/perl-Perinci-Sub-property-result_postfilter
-version: 0.03
+version: 0.04

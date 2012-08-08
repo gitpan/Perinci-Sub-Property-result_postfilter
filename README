@@ -3,7 +3,7 @@ NAME
     Postfilter function result
 
 VERSION
-    version 0.03
+    version 0.04
 
 SYNOPSIS
      # in function metadata
@@ -16,8 +16,7 @@ SYNOPSIS
 DESCRIPTION
     NOTE: The use of this property is now deprecated. Generating filtering
     code for each function is quite wasteful when there are hundreds or more
-    functions that are wrapped. Instead, filtering is now done in formatters
-    like Data::Format::Pretty::JSON and Data::Format::Pretty::YAML.
+    functions that are wrapped. Instead, see Data::Clean::JSON.
 
     This property specifies postfilters for function result. Currently the
     focus of this property is converting values that are unsafe when
