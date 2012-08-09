@@ -8,8 +8,7 @@ META.yml
 README
 dist.ini
 dist.ini~
-lib/Perinci/Sub/property/result_postfilter.pm
-lib/Perinci/Sub/property/result_postfilter.pm~
+lib/Perinci/Sub/Property/result_postfilter.pm
 t/00-compile.t
 t/01-basics.t
 t/release-pod-coverage.t

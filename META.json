@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Perinci-Sub-property-result_postfilter",
+   "name" : "Perinci-Sub-Property-result_postfilter",
    "prereqs" : {
       "build" : {
          "requires" : {
@@ -26,25 +26,26 @@
       },
       "runtime" : {
          "requires" : {
-            "Perinci" : 0,
-            "Perinci::Sub::Wrapper" : "0.24",
+            "Perinci::Util" : 0,
             "perl" : "5.010000"
          }
       },
       "test" : {
          "requires" : {
             "DateTime" : 0,
-            "Test::More" : "0.96"
+            "Perinci::Sub::Wrapper" : "0.30",
+            "Test::More" : "0.96",
+            "Test::Perinci::Sub::Wrapper" : 0
          }
       }
    },
    "release_status" : "stable",
    "resources" : {
-      "homepage" : "http://search.cpan.org/dist/Perinci-Sub-property-result_postfilter/",
+      "homepage" : "http://search.cpan.org/dist/Perinci-Sub-Property-result_postfilter/",
       "repository" : {
-         "url" : "http://github.com/sharyanto/perl-Perinci-Sub-property-result_postfilter"
+         "url" : "http://github.com/sharyanto/perl-Perinci-Sub-Property-result_postfilter"
       }
    },
-   "version" : "0.04"
+   "version" : "0.05"
 }
 

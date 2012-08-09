@@ -6,7 +6,6 @@ use warnings;
 
 use DateTime;
 use Perinci::Sub::Wrapper qw(wrap_sub);
-use Perinci::Sub::property::result_postfilter;
 use Test::More 0.96;
 use Test::Perinci::Sub::Wrapper qw(test_wrap);
 
@@ -21,7 +20,7 @@ $sub = sub {[200,"OK", [0, $re, {k1=>$dt}, [sub{}]] ]; };
 $meta = {v=>1.1};
 
 for my $imp ("for") { # Data::Rmap as of 0.62 can't handle re & coderef yet
-    local $Perinci::Sub::Wrapper::property::result_postfilter::_implementation =
+    local $Perinci::Sub::Wrapper::Property::result_postfilter::_implementation =
         $imp;
     test_wrap(
         name => "result_filter (implementation=$imp)",

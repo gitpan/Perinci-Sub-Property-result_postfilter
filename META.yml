@@ -5,7 +5,9 @@ author:
 build_requires:
   DateTime: 0
   Module::Build: 0.3601
+  Perinci::Sub::Wrapper: 0.30
   Test::More: 0.96
+  Test::Perinci::Sub::Wrapper: 0
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
@@ -14,12 +16,11 @@ license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: Perinci-Sub-property-result_postfilter
+name: Perinci-Sub-Property-result_postfilter
 requires:
-  Perinci: 0
-  Perinci::Sub::Wrapper: 0.24
+  Perinci::Util: 0
   perl: 5.010000
 resources:
-  homepage: http://search.cpan.org/dist/Perinci-Sub-property-result_postfilter/
-  repository: http://github.com/sharyanto/perl-Perinci-Sub-property-result_postfilter
-version: 0.04
+  homepage: http://search.cpan.org/dist/Perinci-Sub-Property-result_postfilter/
+  repository: http://github.com/sharyanto/perl-Perinci-Sub-Property-result_postfilter
+version: 0.05

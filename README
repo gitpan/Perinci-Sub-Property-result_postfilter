@@ -1,9 +1,9 @@
 NAME
-    Perinci::Sub::Wrapper::property::result_postfilter - (DEPRECATED)
+    Perinci::Sub::Wrapper::Property::result_postfilter - (DEPRECATED)
     Postfilter function result
 
 VERSION
-    version 0.04
+    version 0.05
 
 SYNOPSIS
      # in function metadata

@@ -1,4 +1,4 @@
-package Perinci::Sub::Wrapper::property::result_postfilter;
+package Perinci::Sub::Wrapper::Property::result_postfilter;
 
 use 5.010;
 use strict;
@@ -6,7 +6,7 @@ use warnings;
 
 use Perinci::Util qw(declare_property);
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub filter_using_for {
     my ($self, %args) = @_;
@@ -110,11 +110,11 @@ __END__
 
 =head1 NAME
 
-Perinci::Sub::Wrapper::property::result_postfilter - (DEPRECATED) Postfilter function result
+Perinci::Sub::Wrapper::Property::result_postfilter - (DEPRECATED) Postfilter function result
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
