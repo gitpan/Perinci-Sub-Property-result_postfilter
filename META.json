@@ -24,6 +24,11 @@
             "Module::Build" : "0.3601"
          }
       },
+      "develop" : {
+         "requires" : {
+            "Test::Rinci" : "0.01"
+         }
+      },
       "runtime" : {
          "requires" : {
             "Perinci::Util" : 0,
@@ -46,6 +51,6 @@
          "url" : "http://github.com/sharyanto/perl-Perinci-Sub-Property-result_postfilter"
       }
    },
-   "version" : "0.05"
+   "version" : "0.06"
 }
 
