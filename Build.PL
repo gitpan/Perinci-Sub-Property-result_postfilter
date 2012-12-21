@@ -21,13 +21,13 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Perinci-Sub-Property-result_postfilter",
-  "dist_version" => "0.06",
+  "dist_version" => "0.07",
   "license" => "perl",
   "module_name" => "Perinci::Sub::Property::result_postfilter",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Perinci::Util" => 0,
+    "Perinci::Sub::PropertyUtil" => 0,
     "perl" => "5.010000"
   },
   "script_files" => []

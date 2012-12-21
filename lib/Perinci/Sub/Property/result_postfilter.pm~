@@ -104,6 +104,8 @@ declare_property(
 1;
 # ABSTRACT: (DEPRECATED) Postfilter function result
 
+=for Pod::Coverage ^filter_using_.+
+
 =head1 SYNOPSIS
 
  # in function metadata

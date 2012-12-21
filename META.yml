@@ -18,9 +18,9 @@ meta-spec:
   version: 1.4
 name: Perinci-Sub-Property-result_postfilter
 requires:
-  Perinci::Util: 0
+  Perinci::Sub::PropertyUtil: 0
   perl: 5.010000
 resources:
   homepage: http://search.cpan.org/dist/Perinci-Sub-Property-result_postfilter/
   repository: http://github.com/sharyanto/perl-Perinci-Sub-Property-result_postfilter
-version: 0.06
+version: 0.07

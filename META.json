@@ -31,7 +31,7 @@
       },
       "runtime" : {
          "requires" : {
-            "Perinci::Util" : 0,
+            "Perinci::Sub::PropertyUtil" : 0,
             "perl" : "5.010000"
          }
       },
@@ -51,6 +51,6 @@
          "url" : "http://github.com/sharyanto/perl-Perinci-Sub-Property-result_postfilter"
       }
    },
-   "version" : "0.06"
+   "version" : "0.07"
 }
 

@@ -1,4 +1,4 @@
-version=0.05
+version=0.06
 
 name=Perinci-Sub-Property-result_postfilter
 author=Steven Haryanto <stevenharyanto@gmail.com>
@@ -20,4 +20,4 @@ Test::Perinci::Sub::Wrapper=0
 [Prereqs]
 perl=5.010000
 ;!lint-prereqs assume-used # need specific version
-Perinci::Util=0
+Perinci::Sub::PropertyUtil=0
