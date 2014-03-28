@@ -1,12 +1,12 @@
 package Perinci::Sub::Property::result_postfilter;
 
-use 5.010;
+use 5.010001;
 use strict;
 use warnings;
 
 use Perinci::Sub::PropertyUtil qw(declare_property);
 
-our $VERSION = '0.07'; # VERSION
+our $VERSION = '0.08'; # VERSION
 
 sub filter_using_for {
     my ($self, %args) = @_;
@@ -14,10 +14,10 @@ sub filter_using_for {
     my $v    = $args{new} // $args{value};
     return unless $v && keys(%$v);
 
-    $self->select_section('after_call');
+    $self->select_section('after_call_after_res_validation');
     $self->push_lines('', '# postfilter result');
 
-    my $term = $self->{_meta}{result_naked} ? '$res' : '$res->[2]';
+    my $term = $self->{_meta}{result_naked} ? '$_w_res' : '$_w_res->[2]';
 
     my $errp = "result_postfilter: Unknown filter";
     my $gen_process_item = sub {
@@ -55,20 +55,20 @@ sub filter_using_for {
                 die "$errp $a";
             }
         }
-        $code .= "elsif(ref($t) eq 'ARRAY') { \$resf_ary->($t) }";
-        $code .= "elsif(ref($t) eq 'HASH') { \$resf_hash->($t) }";
+        $code .= "elsif(ref($t) eq 'ARRAY') { \$_w_resf_ary->($t) }";
+        $code .= "elsif(ref($t) eq 'HASH') { \$_w_resf_hash->($t) }";
         $code;
     };
 
     $self->push_lines(
-        'state $resf_ary; state $resf_hash;');
+        'state $_w_resf_ary; state $_w_resf_hash;');
     $self->push_lines(
-        'if (!$resf_ary ) { $resf_ary  = sub { '.
+        'if (!$_w_resf_ary ) { $_w_resf_ary  = sub { '.
             'for my $el (@{$_[0]}) { '.
                 $gen_process_item->('$el') . ' } } }'
             );
     $self->push_lines(
-        'if (!$resf_hash) { $resf_hash = sub { '.
+        'if (!$_w_resf_hash) { $_w_resf_hash = sub { '.
             'my $h=shift; for my $k (keys %$h) { '.
                 $gen_process_item->('$h->{$k}') . ' } } }'
             );
@@ -104,9 +104,11 @@ declare_property(
 1;
 # ABSTRACT: (DEPRECATED) Postfilter function result
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -114,7 +116,7 @@ Perinci::Sub::Property::result_postfilter - (DEPRECATED) Postfilter function res
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -180,16 +182,31 @@ around.
 
 L<Perinci>
 
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Perinci-Sub-Property-result_postfilter>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Perinci-Sub-Property-result_postfilter>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Perinci-Sub-Property-result_postfilter>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
 =head1 AUTHOR
 
 Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
